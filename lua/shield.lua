@@ -135,7 +135,6 @@ Shield = Class(moho.shield_methods, Entity) {
         -- Like armor damage, first multiply by armor reduction, then apply handicap
         -- See SimDamage.cpp (DealDamage function) for how this should work
         amount = amount * (self.Owner:GetArmorMult(type))
-        amount = amount * (1.0 - ArmyGetHandicap(self:GetArmy()))
         return math.min(self:GetHealth(), amount)
     end,
 
@@ -163,7 +162,6 @@ Shield = Class(moho.shield_methods, Entity) {
         -- Like armor damage, first multiply by armor reduction, then apply handicap
         -- See SimDamage.cpp (DealDamage function) for how this should work
         amount = amount * (self.Owner:GetArmorMult(type))
-        amount = amount * (1.0 - ArmyGetHandicap(self:GetArmy()))
         local finalVal =  amount - self:GetHealth()
         if finalVal < 0 then
             finalVal = 0
